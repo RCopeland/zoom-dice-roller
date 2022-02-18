@@ -1,0 +1,19 @@
+org: rcopeland
+app: zoom-dice-roller-chat-bot
+service: zoom-dice-roller-chat-bot
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    zoom_client_id: ${param:zoom_client_id}
+    zoom_client_secret: ${param:zoom_client_secret}
+    zoom_bot_jid: ${param:zoom_bot_jid}
+    zoom_verification_token: ${param:zoom_verification_token}
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - httpApi: '*'
